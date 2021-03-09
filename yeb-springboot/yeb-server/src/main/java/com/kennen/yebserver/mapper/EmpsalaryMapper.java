@@ -1,14 +1,14 @@
 package com.kennen.yebserver.mapper;
 
-import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.kennen.yebserver.pojo.Empsalary;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * <p>
  *  Mapper 接口
  * </p>
  *
- * @author hjy
+ * @author hejiyuan
  * @since 2021-03-10
  */
 public interface EmpsalaryMapper extends BaseMapper<Empsalary> {

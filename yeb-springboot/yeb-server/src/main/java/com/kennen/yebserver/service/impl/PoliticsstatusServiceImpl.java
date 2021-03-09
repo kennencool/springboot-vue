@@ -4,7 +4,6 @@ import com.kennen.yebserver.pojo.Politicsstatus;
 import com.kennen.yebserver.mapper.PoliticsstatusMapper;
 import com.kennen.yebserver.service.IPoliticsstatusService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.kennen.yebserver.service.IPoliticsstatusService;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Service;
  *  服务实现类
  * </p>
  *
- * @author hjy
+ * @author hejiyuan
  * @since 2021-03-10
  */
 @Service
