@@ -6,9 +6,10 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="yeb-service" />
+        <module name="yeb-web" />
         <module name="yeb-mapper" />
         <module name="yeb-model" />
-        <module name="yeb-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -18,6 +19,7 @@
       <module name="yeb-server" target="1.8" />
       <module name="yeb-service" target="1.8" />
       <module name="yeb-springboot" target="1.8" />
+      <module name="yeb-web" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -27,6 +29,7 @@
       <module name="yeb-model" options="-parameters" />
       <module name="yeb-server" options="-parameters" />
       <module name="yeb-service" options="-parameters" />
+      <module name="yeb-web" options="-parameters" />
     </option>
   </component>
 </project>

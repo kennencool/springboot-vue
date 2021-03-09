@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-mapper/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-model/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-web/src/main/java" charset="UTF-8" />
   </component>
 </project>
