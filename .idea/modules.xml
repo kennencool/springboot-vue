@@ -3,6 +3,12 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/springboot-vue.iml" filepath="$PROJECT_DIR$/.idea/springboot-vue.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-mapper/yeb-mapper.iml" filepath="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-mapper/yeb-mapper.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-model/yeb-model.iml" filepath="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-model/yeb-model.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-server.iml" filepath="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-service/yeb-service.iml" filepath="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-service/yeb-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeb-springboot/yeb-springboot.iml" filepath="$PROJECT_DIR$/yeb-springboot/yeb-springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-web/yeb-web.iml" filepath="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-web/yeb-web.iml" />
     </modules>
   </component>
 </project>
