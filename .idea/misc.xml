@@ -4,8 +4,16 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/yeb-springboot/pom.xml" />
-        <option value="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-mapper/pom.xml" />
+        <option value="$PROJECT_DIR$/yeb-springboot/yeb-server/pom.xml" />
       </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-mapper/pom.xml" />
+        <option value="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-model/pom.xml" />
+        <option value="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-service/pom.xml" />
+        <option value="$PROJECT_DIR$/yeb-springboot/yeb-server/yeb-web/pom.xml" />
+      </set>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
