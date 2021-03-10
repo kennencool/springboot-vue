@@ -1,5 +1,4 @@
 let proxyObj={}
-
 proxyObj['/']={
     //  websocket
     ws: false,
