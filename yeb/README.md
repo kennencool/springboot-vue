@@ -1,19 +1,5 @@
-# yeb
+# 前端项目
 
-## Project setup
-```
-npm install
-```
+#### 1、跨域问题解决
+这里附上链接：https://www.yinxiang.com/everhub/note/30dc4b36-363a-4a08-a0ab-78346fc460d2
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
