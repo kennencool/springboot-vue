@@ -31,4 +31,3 @@ jwt:
   secret: yeb-secret
   expiration: 604800
   tokenHead: Bearer
-  

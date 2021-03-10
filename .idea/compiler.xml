@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="yeb-generator" />
+        <module name="yeb-server" />
         <module name="yeb-web" />
       </profile>
     </annotationProcessing>

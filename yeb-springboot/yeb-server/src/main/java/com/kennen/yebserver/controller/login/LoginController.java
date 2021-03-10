@@ -29,7 +29,8 @@ public class LoginController {
     @ApiOperation(value = "登录之后返回token")
     @PostMapping("/login")
     public RespBean login(@RequestBody HrLoginParam hrLoginParam, HttpServletRequest request){
-        return hrService.login(hrLoginParam.getUsername(), hrLoginParam.getPassword(), request);
+        return hrService.login(hrLoginParam.getUsername(), hrLoginParam.getPassword(),
+                hrLoginParam.getCode(), request);
     }
 
     @ApiOperation(value = "获取当前登录用户的信息")

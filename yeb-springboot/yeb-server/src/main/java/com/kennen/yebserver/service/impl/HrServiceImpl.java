@@ -41,7 +41,12 @@ public class HrServiceImpl extends ServiceImpl<HrMapper, Hr> implements IHrServi
     private String tokenHead;
     
     @Override
-    public RespBean login(String username, String password, HttpServletRequest request) {
+    public RespBean login(String username, String password, String code, HttpServletRequest request) {
+        //  从session中获取生成的验证码
+        String captcha = (String)request.getSession().getAttribute("captcha");
+        if(!code.equalsIgnoreCase(captcha)){
+            return RespBean.error("验证码输入错误！");
+        }
         UserDetails userDetails = userDetailsService.loadUserByUsername(username);
         if(null == userDetails || !passwordEncoder.matches(password, userDetails.getPassword())){
             return RespBean.error("用户名或密码错误！");
