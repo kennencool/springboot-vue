@@ -11,9 +11,9 @@
         </el-input>
       </el-form-item>
       <el-form-item prop="code">
-        <el-input type="text" v-model="loginForm.code" placeholder="点击图片更换验证码" style="width: 250px; margin-right: 5px">
+        <el-input type="text" v-model="loginForm.code" placeholder="点击图片更换验证码" style="width: 200px; margin-right: 5px">
         </el-input>
-        <img :src="captchaUrl">
+        <img :src="captchaUrl" @click="updateCaptcha" style="cursor: pointer">
       </el-form-item>
       <el-form-item>
         <el-checkbox v-model="checked">记住我</el-checkbox>
@@ -28,10 +28,10 @@ export default {
   name: "Login",
   data(){
     return{
-      captchaUrl:'',
+      captchaUrl:'/captcha?time=' + new Date(),
       loginForm:{
-        username:'admin',
-        password:'123',
+        username:'',
+        password:'',
         code:''
       },
       checked: true,
@@ -43,6 +43,9 @@ export default {
     }
   },
   methods:{
+    updateCaptcha(){
+      this.captchaUrl = '/captcha?time=' + new Date();
+    },
     submitLogin(){
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
@@ -72,4 +75,5 @@ export default {
     margin: 0px auto 40px auto;
     text-align: center;
   }
+
 </style>

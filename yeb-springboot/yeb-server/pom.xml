@@ -23,12 +23,6 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.mybatis.spring.boot</groupId>
-			<artifactId>mybatis-spring-boot-starter</artifactId>
-			<version>2.1.0</version>
-		</dependency>
 		
 		<dependency>
 			<groupId>com.alibaba</groupId>
@@ -60,12 +54,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-redis</artifactId>
 		</dependency>
@@ -90,18 +78,19 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+<!--		JWT token 依赖-->
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.0</version>
+		</dependency>
+<!--		spring security依赖-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatisplus-spring-boot-starter</artifactId>
-			<version>1.0.5</version>
-		</dependency>
 		
+<!--		swagger接口文档生成器依赖-->
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
@@ -112,19 +101,19 @@
 			<artifactId>swagger-bootstrap-ui</artifactId>
 			<version>1.9.6</version>
 		</dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-core</artifactId>
-			<version>3.3.1.tmp</version>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.baomidou</groupId>
-			<artifactId>mybatis-plus-extension</artifactId>
-			<version>3.3.1.tmp</version>
-			<scope>compile</scope>
-		</dependency>
 
+<!--		mybatis-plus正统pom依赖，一定要记住全名和版本！！！大坑-->
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus-boot-starter</artifactId>
+			<version>3.3.1.tmp</version>
+		</dependency>
+<!--		google kaptcha依赖-->
+		<dependency>
+			<groupId>com.github.axet</groupId>
+			<artifactId>kaptcha</artifactId>
+			<version>0.0.9</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
@@ -156,7 +145,8 @@
 					<include>**/*.yaml</include>
 					<include>**/*.xml</include> 
 					<include>**/*.properties</include> 
-				</includes> <filtering>false</filtering>
+				</includes> 
+				<filtering>false</filtering>
 			</resource> 
 		</resources> 
 	</build>
