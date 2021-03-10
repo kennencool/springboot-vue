@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,10 +32,10 @@ import java.util.Map;
 @Service
 public class HrServiceImpl extends ServiceImpl<HrMapper, Hr> implements IHrService {
     
-    @Autowired private UserDetailsService userDetailsService;
-    @Autowired private PasswordEncoder passwordEncoder;
-    @Autowired private JwtTokenUtil jwtTokenUtil;
-    @Autowired private HrMapper mapper;
+    @Resource private UserDetailsService userDetailsService;
+    @Resource private PasswordEncoder passwordEncoder;
+    @Resource private JwtTokenUtil jwtTokenUtil;
+    @Resource private HrMapper mapper;
     
     @Value("${jwt.tokenHead}")
     private String tokenHead;
@@ -45,7 +46,7 @@ public class HrServiceImpl extends ServiceImpl<HrMapper, Hr> implements IHrServi
         if(null == userDetails || !passwordEncoder.matches(password, userDetails.getPassword())){
             return RespBean.error("用户名或密码错误！");
         }
-        if(userDetails.isEnabled()){
+        if(!userDetails.isEnabled()){
             return RespBean.error("账号被禁用，请联系管理员！");
         }
         //  把登录对象放到security全局对象中

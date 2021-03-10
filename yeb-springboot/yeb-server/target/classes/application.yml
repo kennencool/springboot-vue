@@ -26,3 +26,9 @@ mybatis-plus:
   type-aliases-package: com.kennen.yebserver.pojo
   configuration:
     map-underscore-to-camel-case: false
+jwt:
+  tokenHeader: Authorization
+  secret: yeb-secret
+  expiration: 604800
+  tokenHead: Bearer
+  

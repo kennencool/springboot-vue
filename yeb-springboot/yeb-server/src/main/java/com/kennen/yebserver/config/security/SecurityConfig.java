@@ -5,17 +5,19 @@ import com.kennen.yebserver.config.filter.JwtAuthenticationTokenFilter;
 import com.kennen.yebserver.config.handler.RestfulAccessDeniedHandler;
 import com.kennen.yebserver.pojo.Hr;
 import com.kennen.yebserver.service.IHrService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+
 
 import javax.annotation.Resource;
 
@@ -25,6 +27,7 @@ import javax.annotation.Resource;
  * @Description: Security配置类
  */
 @Configuration
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Resource private IHrService hrService;
     @Resource private RestAuthorizationEntryPoint entryPoint;
@@ -41,6 +44,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(passwordEncoder());
     }
 
+    /**
+     * 放行一些路径，不走拦截路径
+     * @param web
+     * @throws Exception
+     */
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(
+                "/css/**",
+                "/js/**",
+                "/index.html",
+                "favicon.ico",
+                "/doc.html",
+                "/webjars/**",
+                "/swagger-resources/**",
+                "/v2/api-docs/**",
+                "/login",
+                "/logout"
+        );
+    }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //  使用JWT不需要csrf
@@ -48,10 +72,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //  基于token，不需要session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                //  允许登录
                 .authorizeRequests()
-                .antMatchers("/login","logout")
-                .permitAll()
                 //  除了上面的路径，其他都需要验证
                 .anyRequest()
                 .authenticated()

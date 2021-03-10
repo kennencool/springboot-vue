@@ -9,6 +9,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,7 +28,7 @@ public class LoginController {
     
     @ApiOperation(value = "登录之后返回token")
     @PostMapping("/login")
-    public RespBean login(HrLoginParam hrLoginParam, HttpServletRequest request){
+    public RespBean login(@RequestBody HrLoginParam hrLoginParam, HttpServletRequest request){
         return hrService.login(hrLoginParam.getUsername(), hrLoginParam.getPassword(), request);
     }
 
@@ -44,7 +45,7 @@ public class LoginController {
     }
     
     @ApiOperation(value = "退出登录")
-    @PostMapping("/logout")
+    @GetMapping("/logout")
     public RespBean logout(){
         return RespBean.success("注销成功！");
     }
