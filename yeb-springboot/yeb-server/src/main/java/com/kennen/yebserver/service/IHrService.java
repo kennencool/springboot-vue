@@ -2,9 +2,12 @@ package com.kennen.yebserver.service;
 
 import com.kennen.yebserver.pojo.Hr;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.kennen.yebserver.pojo.Menu;
+import com.kennen.yebserver.pojo.Role;
 import com.kennen.yebserver.pojo.resp.RespBean;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * <p>
@@ -32,4 +35,11 @@ public interface IHrService extends IService<Hr> {
      * @return
      */
     Hr getHrByUserName(String username);
+
+    /**
+     * 根据id获取角色
+     * @param userId
+     * @return
+     */
+    List<Role> getRoles(int userId);
 }

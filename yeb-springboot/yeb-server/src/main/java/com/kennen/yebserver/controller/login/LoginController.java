@@ -32,18 +32,6 @@ public class LoginController {
         return hrService.login(hrLoginParam.getUsername(), hrLoginParam.getPassword(),
                 hrLoginParam.getCode(), request);
     }
-
-    @ApiOperation(value = "获取当前登录用户的信息")
-    @GetMapping("/hr/info")
-    public Hr getHrInfo(Principal principal){
-        if(null == principal){
-            return null;
-        }
-        String username = principal.getName();
-        Hr hr = hrService.getHrByUserName(username);
-        hr.setPassword(null);
-        return hr;
-    }
     
     @ApiOperation(value = "退出登录")
     @GetMapping("/logout")

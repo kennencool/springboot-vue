@@ -2,8 +2,11 @@ package com.kennen.yebserver.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.kennen.yebserver.config.security.JwtTokenUtil;
+import com.kennen.yebserver.mapper.RoleMapper;
 import com.kennen.yebserver.pojo.Hr;
 import com.kennen.yebserver.mapper.HrMapper;
+import com.kennen.yebserver.pojo.Menu;
+import com.kennen.yebserver.pojo.Role;
 import com.kennen.yebserver.pojo.resp.RespBean;
 import com.kennen.yebserver.service.IHrService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -19,6 +22,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -35,7 +39,8 @@ public class HrServiceImpl extends ServiceImpl<HrMapper, Hr> implements IHrServi
     @Resource private UserDetailsService userDetailsService;
     @Resource private PasswordEncoder passwordEncoder;
     @Resource private JwtTokenUtil jwtTokenUtil;
-    @Resource private HrMapper mapper;
+    @Resource private HrMapper hrMapper;
+    @Resource private RoleMapper roleMapper;
     
     @Value("${jwt.tokenHead}")
     private String tokenHead;
@@ -68,9 +73,14 @@ public class HrServiceImpl extends ServiceImpl<HrMapper, Hr> implements IHrServi
 
     @Override
     public Hr getHrByUserName(String username) {
-        return mapper.selectOne(new QueryWrapper<Hr>()
+        return hrMapper.selectOne(new QueryWrapper<Hr>()
                 .eq("username",username)
                 .eq("enabled",true)
         );
+    }
+
+    @Override
+    public List<Role> getRoles(int userId) {
+        return roleMapper.getRoles(userId);
     }
 }

@@ -14,4 +14,15 @@
         id, name, nameZh
     </sql>
 
+    <!--    根据用户id查询角色列表-->
+    <select id="getRoles" resultType="com.kennen.yebserver.pojo.Role">
+        select 
+            r.id,
+            r.name,
+            r.nameZh
+        from
+            role r left join hr_role hr on r.id = hr.rid
+        where hr.hrid = #{userId}
+    </select>
+
 </mapper>
