@@ -1,6 +1,10 @@
 <template>
   <div>
-    <el-form :rules="rules" ref="loginForm" :model="loginForm" class="loginContainer">
+    <el-form :rules="rules" ref="loginForm" :model="loginForm" class="loginContainer"
+             v-loading="loading"
+             element-loading-text="正在登陆..."
+             element-loading-spinner="el-icon-loading"
+             element-loading-background="rgba(0, 0, 0, 0.8)">
       <h3 class="loginTitle">系统登录</h3>
       <el-form-item prop="username">
         <el-input type="text" v-model="loginForm.username" placeholder="请输入用户名：">
@@ -34,6 +38,7 @@ export default {
         password:'',
         code:''
       },
+      loading: false,
       checked: true,
       rules:{
         username:[{required:true, message:'请输入用户名', trigger:'blur'}],
@@ -49,7 +54,12 @@ export default {
     submitLogin(){
       this.$refs.loginForm.validate((valid) => {
         if (valid) {
-          alert('submit!');
+          this.loading = true;
+          this.postRequest('/login',this.loginForm).then(resp=>{
+            this.loading = false;
+            window.sessionStorage.setItem('tokenStr',resp.obj.tokenHead + resp.obj.token);
+            this.$router.replace('/home');
+          });
         } else {
           this.$message.error('请输入必填字段！');
           return false;

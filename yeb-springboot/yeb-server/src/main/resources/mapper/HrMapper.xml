@@ -20,5 +20,5 @@
     <sql id="Base_Column_List">
         id, name, phone, telephone, address, enabled, username, password, userface, remark
     </sql>
-
+    
 </mapper>
