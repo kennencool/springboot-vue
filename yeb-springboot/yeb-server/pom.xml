@@ -24,10 +24,11 @@
 			<artifactId>lombok</artifactId>
 		</dependency>
 		
+<!--		版本低造成过 datetime映射string问题-->
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid-spring-boot-starter</artifactId>
-			<version>1.1.10</version>
+			<version>1.1.18</version>
 		</dependency>
 		
 		<dependency>

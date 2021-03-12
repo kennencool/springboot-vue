@@ -58,7 +58,9 @@ export default {
           this.postRequest('/login',this.loginForm).then(resp=>{
             this.loading = false;
             window.sessionStorage.setItem('tokenStr',resp.obj.tokenHead + resp.obj.token);
-            this.$router.replace('/home');
+            //  这里作用是，有种可能是用户访问了某个界面，未登录来到了登录界面，登录后应该回到访问的那个界面
+            let path = this.$route.query.redirect;
+            this.$router.replace((path == '/' || path == undefined)?'/home':path);
           });
         } else {
           this.$message.error('请输入必填字段！');

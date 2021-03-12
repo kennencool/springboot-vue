@@ -26,7 +26,7 @@ public class HrController {
     @Autowired private IHrService hrService;
     
     @ApiOperation(value = "获取当前登录用户的信息")
-    @GetMapping("/hr/info")
+    @GetMapping("/info")
     public Hr getHrInfo(Principal principal){
         if(null == principal){
             return null;
@@ -37,6 +37,5 @@ public class HrController {
         hr.setRoles(hrService.getRoles(hr.getId()));
         return hr;
     }
-    
     
 }
