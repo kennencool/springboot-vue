@@ -22,8 +22,23 @@ router.beforeEach((to,from,next)=>{
   //  如果登录了
   if(sessionStorage.getItem("tokenStr")){
     initMenu(router,store);
+    if(!window.sessionStorage.getItem("user")){
+      return getRequest("/hr/info").then(resp=>{
+        if(resp){
+          // 存入用户信息
+          window.sessionStorage.setItem("user",JSON.stringify(resp));
+          next();
+        }
+      })
+    }
+    next();
+  }else {
+    if(to.path == '/') {
+      next();
+    } else{
+      next('/?redirect=' + to.path);
+    }
   }
-  next();
 })
 
 new Vue({
