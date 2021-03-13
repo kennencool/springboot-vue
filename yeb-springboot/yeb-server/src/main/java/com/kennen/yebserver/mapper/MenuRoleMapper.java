@@ -20,5 +20,5 @@ public interface MenuRoleMapper extends BaseMapper<MenuRole> {
      * @param mids
      * @return
      */
-    Integer insertRecord(@Param("rid") Integer rid, @Param("mids") Integer[] mids);
+    Integer insertRecord(Integer rid, Integer[] mids);
 }
