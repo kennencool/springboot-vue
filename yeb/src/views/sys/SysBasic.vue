@@ -23,7 +23,7 @@ export default {
   name: "SysBasic",
   data(){
     return{
-      activeName: 'PosMana'
+      activeName: 'PermissMana'
     }
   },
   components:{
