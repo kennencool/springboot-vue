@@ -53,8 +53,11 @@ public class PermissController {
     public RespBean deleteRole(
             @PathVariable Integer rid
     ){
-        if(roleService.removeById(rid)){
-            return RespBean.success("删除成功！");
+        //  注意，首先要将该角色在 menu_role中的数据删除，防止外键干扰
+        if(menuRoleService.remove(new QueryWrapper<MenuRole>().eq("rid",rid))){
+            if(roleService.removeById(rid)){
+                return RespBean.success("删除成功！");
+            }
         }
         return RespBean.error("删除失败！");
     }
@@ -79,8 +82,7 @@ public class PermissController {
     
     @ApiOperation(value = "更新角色的菜单")
     @PutMapping("/")
-    public RespBean updateMenuRole(Integer rid, Integer[] mids
-    ){
+    public RespBean updateMenuRole(Integer rid, Integer[] mids){
         return menuRoleService.updateMenuRole(rid,mids);
     }
 }

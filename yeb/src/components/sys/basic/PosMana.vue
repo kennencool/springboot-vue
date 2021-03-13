@@ -5,7 +5,7 @@
                 size="small"
           placeholder="添加职位..." suffix-icon="el-icon-circle-plus-outline" v-model="pos.name">
       </el-input>
-      <el-button class="addPosButton" size="small" type="primary" @click="addPosition">添加</el-button>
+      <el-button size="small" type="primary" @click="addPosition">添加</el-button>
     </div>
     <div class="posManaMain">
       <el-table
@@ -19,7 +19,7 @@
         <el-table-column prop="name" label="职位" width="180"></el-table-column>
         <el-table-column prop="createDate" label="创建时间" width="260"></el-table-column>
         <el-table-column label="操作">
-          <template #default="scope">
+          <template slot-scope="scope">
             <el-button
                 size="mini"
                 @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
