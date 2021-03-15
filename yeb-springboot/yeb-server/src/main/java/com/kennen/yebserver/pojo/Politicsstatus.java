@@ -1,12 +1,12 @@
 package com.kennen.yebserver.pojo;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -18,7 +18,9 @@ import lombok.experimental.Accessors;
  * @since 2021-03-10
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@RequiredArgsConstructor
+@EqualsAndHashCode(callSuper = false,of = "name")
 @ApiModel(value="Politicsstatus对象", description="")
 public class Politicsstatus implements Serializable {
 
@@ -27,6 +29,8 @@ public class Politicsstatus implements Serializable {
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    @Excel(name = "政治面貌")
+    @NonNull
     private String name;
 
 

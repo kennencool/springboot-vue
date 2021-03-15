@@ -111,4 +111,22 @@
             order by e.id
     </select>
 
+    <select id="getEmployee" resultMap="EmployeeInfo">
+        select
+        e.*, n.id nid, n.name nname, p.id pid, p.name pname, d.id did, d.name dname, j.id jid, j.name jname, pos.id posid, pos.name posname
+        from
+        employee e,
+        nation n,
+        politicsstatus p,
+        department d,
+        joblevel j,
+        position pos
+        where
+        e.nationId = n.id and e.politicId = p.id and e.departmentId = d.id
+        and e.jobLevelId = j.id and e.posId = pos.id    
+        <if test="null!=id">
+            and e.id = #{id}
+        </if>
+        order by e.id  
+    </select>
 </mapper>
