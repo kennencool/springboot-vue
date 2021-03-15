@@ -27,7 +27,6 @@ import org.springframework.security.core.userdetails.UserDetails;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @ApiModel(value="Hr对象", description="")
 public class Hr implements Serializable, UserDetails {
 

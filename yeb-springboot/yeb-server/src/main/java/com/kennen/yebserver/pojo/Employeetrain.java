@@ -21,7 +21,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @ApiModel(value="Employeetrain对象", description="")
 public class Employeetrain implements Serializable {
 

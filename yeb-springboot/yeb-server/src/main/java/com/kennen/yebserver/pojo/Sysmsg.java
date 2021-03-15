@@ -19,7 +19,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @ApiModel(value="Sysmsg对象", description="")
 public class Sysmsg implements Serializable {
 

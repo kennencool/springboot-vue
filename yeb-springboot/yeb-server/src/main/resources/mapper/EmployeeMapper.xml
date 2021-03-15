@@ -33,10 +33,82 @@
         <result column="endContract" property="endContract" />
         <result column="workAge" property="workAge" />
     </resultMap>
+    
+    <resultMap id="EmployeeInfo" type="com.kennen.yebserver.pojo.Employee" extends="BaseResultMap">
+        <association property="nation" javaType="com.kennen.yebserver.pojo.Nation">
+            <id column="nid" property="id"></id>
+            <result column="nname" property="name"></result>
+         </association>
+        <association property="politicsstatus" javaType="com.kennen.yebserver.pojo.Politicsstatus">
+            <id column="pid" property="id"></id>
+            <result column="pname" property="name"></result>
+        </association>
+        <association property="department" javaType="com.kennen.yebserver.pojo.Department">
+            <id column="did" property="id"></id>
+            <result column="dname" property="name"></result>
+        </association>
+        <association property="joblevel" javaType="com.kennen.yebserver.pojo.Joblevel">
+            <id column="jid" property="id"></id>
+            <result column="jname" property="name"></result>
+        </association>
+        <association property="position" javaType="com.kennen.yebserver.pojo.Position">
+            <id column="posid" property="id"></id>
+            <result column="posname" property="name"></result>
+        </association>
+    </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, name, gender, birthday, idCard, wedlock, nationId, nativePlace, politicId, email, phone, address, departmentId, jobLevelId, posId, engageForm, tiptopDegree, specialty, school, beginDate, workState, workID, contractTerm, conversionTime, notWorkDate, beginContract, endContract, workAge
     </sql>
+    
+<!--    获取所有员工（分页）-->
+    <select id="getEmployeeByPage" resultMap="EmployeeInfo">
+        select 
+            e.*, n.id nid, n.name nname, p.id pid, p.name pname, d.id did, d.name dname, j.id jid, j.name jname, pos.id posid, pos.name posname
+        from
+            employee e,
+            nation n,
+            politicsstatus p,
+            department d,
+            joblevel j,
+            position pos
+        where
+            e.nationId = n.id and e.politicId = p.id and e.departmentId = d.id 
+            and e.jobLevelId = j.id and e.posId = pos.id
+            
+            <if test="null!=employee.name and ''!=employee.name">
+                and e.name LIKE concat('%',#{employee.name},'%')
+            </if>
+
+            <if test="null!=employee.politicId">
+                and e.politicId = #{employee.politicId}
+            </if>
+                
+            <if test="null!=employee.nationId">
+                and e.nationId = #{employee.nationId}
+            </if>
+
+            <if test="null!=employee.jobLevelId">
+                and e.jobLevelId = #{employee.jobLevelId}
+            </if>
+                
+            <if test="null!=employee.posId">
+                and e.posId = #{employee.posId}
+            </if>
+                
+            <if test="null!=employee.departmentId">
+                and e.departmentId = #{employee.departmentId}
+            </if>
+                
+            <if test="null!=employee.engageForm and ''!=employee.engageForm">
+                and e.engageForm = #{employee.engageForm}
+            </if>
+            
+            <if test="null!=beginDateScope and 2 == beginDateScope.length">
+                and e.beginContract between #{beginDateScope[0]} and #{beginDateScope[1]}
+            </if>
+            order by e.id
+    </select>
 
 </mapper>

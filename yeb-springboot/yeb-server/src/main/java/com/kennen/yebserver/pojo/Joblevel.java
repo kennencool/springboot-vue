@@ -23,7 +23,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @ApiModel(value="Joblevel对象", description="")
 public class Joblevel implements Serializable {
 

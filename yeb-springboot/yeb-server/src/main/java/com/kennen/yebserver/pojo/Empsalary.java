@@ -19,7 +19,6 @@ import lombok.experimental.Accessors;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)
 @ApiModel(value="Empsalary对象", description="")
 public class Empsalary implements Serializable {
 
