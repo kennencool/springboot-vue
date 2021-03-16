@@ -1,5 +1,6 @@
 package com.kennen.yebserver.pojo;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
@@ -9,8 +10,7 @@ import java.io.Serializable;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import lombok.experimental.Accessors;
 
 /**
@@ -22,7 +22,9 @@ import lombok.experimental.Accessors;
  * @since 2021-03-10
  */
 @Data
-@EqualsAndHashCode(callSuper = false)
+@NoArgsConstructor
+@RequiredArgsConstructor
+@EqualsAndHashCode(callSuper = false,of = "name")
 @ApiModel(value="Joblevel对象", description="")
 public class Joblevel implements Serializable {
 
@@ -32,6 +34,8 @@ public class Joblevel implements Serializable {
     private Integer id;
 
     @ApiModelProperty(value = "职称名称")
+    @Excel(name = "职称",width = 15)
+    @NonNull
     private String name;
 
     @TableField("titleLevel")

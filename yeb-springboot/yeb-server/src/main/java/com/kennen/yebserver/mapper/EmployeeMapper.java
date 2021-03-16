@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
+import java.util.List;
 
 /**
  * <p>
@@ -24,4 +25,6 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
     IPage<Employee> getEmployeeByPage(Page<Employee> page,
                                       @Param("employee") Employee employee, 
                                       @Param("beginDateScope") Date[] beginDateScope);
+
+    List<Employee> getEmployee(Integer id);
 }
