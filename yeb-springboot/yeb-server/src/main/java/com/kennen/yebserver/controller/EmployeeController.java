@@ -108,9 +108,9 @@ public class EmployeeController {
     }
 
     @ApiOperation(value = "删除员工")
-    @DeleteMapping("/")
-    public RespBean deleteEmp(@RequestBody Employee employee){
-        if(employeeService.removeById(employee)){
+    @DeleteMapping("/{id}")
+    public RespBean deleteEmp(@PathVariable Integer id){
+        if(employeeService.removeById(id)){
             return RespBean.success("删除成功！");
         }
         return RespBean.error("删除失败！");
