@@ -10,6 +10,7 @@ import {putRequest} from "./utils/api";
 import {deleteRequest} from "./utils/api";
 import {initMenu} from "@/utils/menus";
 import 'font-awesome/css/font-awesome.min.css'
+import {downloadRequest} from "@/utils/download";
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
@@ -17,6 +18,7 @@ Vue.prototype.postRequest = postRequest;
 Vue.prototype.getRequest = getRequest;
 Vue.prototype.putRequest = putRequest;
 Vue.prototype.deleteRequest = deleteRequest;
+Vue.prototype.downloadRequest = downloadRequest;
 
 router.beforeEach((to,from,next)=>{
   //  如果登录了
