@@ -1,0 +1,21 @@
+server:
+  port:8082
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: nbuser
+    url: jdbc:mysql://localhost:3306/vhr?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+  mail:
+    host: smtp.qq.com
+    protocol: smtp
+    default-encoding: UTF-8
+    password: ucdwufnxqcjbciee
+    username: 3304192108@qq.com
+    port: 587
+      
+  rabbitmq:
+    username: guest
+    password: guest
+    host: localhost
+    port: 5672

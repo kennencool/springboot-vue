@@ -8,13 +8,15 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="yeb-generator" />
-        <module name="yeb-server" />
         <module name="yeb-web" />
+        <module name="yeb-mail" />
+        <module name="yeb-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="untitled" target="1.8" />
       <module name="yeb-generator" target="1.8" />
+      <module name="yeb-mail" target="1.8" />
       <module name="yeb-mapper" target="1.8" />
       <module name="yeb-model" target="1.8" />
       <module name="yeb-server" target="1.8" />
@@ -27,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="untitled" options="-parameters" />
       <module name="yeb-generator" options="-parameters" />
+      <module name="yeb-mail" options="-parameters" />
       <module name="yeb-mapper" options="-parameters" />
       <module name="yeb-model" options="-parameters" />
       <module name="yeb-server" options="-parameters" />
