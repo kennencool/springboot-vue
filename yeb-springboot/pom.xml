@@ -17,6 +17,14 @@
 	<modules>
 		<module>yeb-server</module>
 		<module>yeb-generator</module>
+		<module>yeb-mail</module>
 	</modules>
 	
+	<dependencies>
+		<!--		rabbitmq 依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+	</dependencies>
 </project>

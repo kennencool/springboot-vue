@@ -5,6 +5,7 @@
       <list>
         <option value="$PROJECT_DIR$/yeb-springboot/pom.xml" />
         <option value="$PROJECT_DIR$/yeb-springboot/yeb-server/pom.xml" />
+        <option value="$PROJECT_DIR$/yeb-springboot/yeb-mail/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

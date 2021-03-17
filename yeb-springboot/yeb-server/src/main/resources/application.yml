@@ -7,9 +7,11 @@ spring:
   rabbitmq:
     username: guest
     password: guest
-    host: 127.0.0.1
+    host: localhost
+    port: 5672
     publisher-confirms: true
     publisher-returns: true
+  
   redis:
     host: 127.0.0.1
     database: 9
