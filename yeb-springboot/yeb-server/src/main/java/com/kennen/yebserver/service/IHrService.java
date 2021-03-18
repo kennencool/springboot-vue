@@ -42,4 +42,11 @@ public interface IHrService extends IService<Hr> {
      * @return
      */
     List<Role> getRoles(int userId);
+
+    /**
+     * 获取所有操作员
+     * @param keyword
+     * @return
+     */
+    List<Hr> getAllHrs(String keyword);
 }

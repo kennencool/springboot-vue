@@ -84,4 +84,10 @@ public class HrServiceImpl extends ServiceImpl<HrMapper, Hr> implements IHrServi
     public List<Role> getRoles(int userId) {
         return roleMapper.getRoles(userId);
     }
+
+    @Override
+    public List<Hr> getAllHrs(String keyword) {
+        return hrMapper.getAllHrs(((Hr)(SecurityContextHolder.getContext().getAuthentication().getPrincipal()))
+                .getId(),keyword);
+    }
 }
