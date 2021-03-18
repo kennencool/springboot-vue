@@ -21,7 +21,7 @@ import java.io.PrintWriter;
 public class RestAuthorizationEntryPoint implements AuthenticationEntryPoint {
     @Override
     public void commence(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AuthenticationException e) throws IOException, ServletException {
-        httpServletResponse.setCharacterEncoding("UTF-8");
+        httpServletResponse.setCharacterEncoding("UTF-8"); // 8
         httpServletResponse.setContentType("application/json");
         PrintWriter out = httpServletResponse.getWriter();
         RespBean bean = RespBean.error("登录信息失效，请联系管理员");
