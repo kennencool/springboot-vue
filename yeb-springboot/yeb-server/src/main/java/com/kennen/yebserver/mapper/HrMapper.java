@@ -3,6 +3,7 @@ package com.kennen.yebserver.mapper;
 import com.kennen.yebserver.pojo.Hr;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.kennen.yebserver.pojo.Menu;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,4 +23,12 @@ public interface HrMapper extends BaseMapper<Hr> {
      * @return
      */
     List<Menu> getMenusById(Integer id);
+
+    /**
+     * 获取其他操作员
+     * @param id
+     * @param keyword
+     * @return
+     */
+    List<Hr> getAllHrs(@Param("id") Integer id, @Param("keyword") String keyword);
 }

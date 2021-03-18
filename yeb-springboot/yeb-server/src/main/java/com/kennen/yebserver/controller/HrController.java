@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.List;
 
 /**
  * <p>
@@ -36,6 +37,12 @@ public class HrController {
         hr.setPassword(null);
         hr.setRoles(hrService.getRoles(hr.getId()));
         return hr;
+    }
+    
+    @ApiOperation(value = "获取所有操作员")
+    @GetMapping("/")
+    public List<Hr> getAllHrs(String keyword){
+        return hrService.getAllHrs(keyword);
     }
     
 }

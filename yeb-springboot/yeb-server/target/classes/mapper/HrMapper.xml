@@ -15,10 +15,36 @@
         <result column="userface" property="userface" />
         <result column="remark" property="remark" />
     </resultMap>
+    
+    <resultMap id="HrWithRole" type="com.kennen.yebserver.pojo.Hr" extends="BaseResultMap">
+        <collection property="roles" ofType="com.kennen.yebserver.pojo.Role">
+            <id column="rid" property="id" />
+            <result column="rname" property="name" />
+            <result column="rnameZh" property="nameZh" />
+        </collection>
+    </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, name, phone, telephone, address, enabled, username, password, userface, remark
     </sql>
-    
+<!--    获取所有操作员-->
+    <select id="getAllHrs" resultMap="HrWithRole">
+        SELECT
+            h.*,
+            r.id rid,
+            r.`name` rname,
+            r.nameZh rnameZh 
+        FROM
+            hr h,
+            hr_role hr,
+            role r 
+        WHERE
+            h.id = hr.hrid 
+            AND hr.rid = r.id 
+            AND h.id != #{id}
+            <if test="null!=keyword and ''!=keyword">
+                AND h.`name` LIKE CONCAT( '%', #{keyword}, '%' )
+            </if>
+    </select>
 </mapper>
