@@ -25,7 +25,7 @@ public class CustomFilter implements FilterInvocationSecurityMetadataSource {
     
     @Override
     public Collection<ConfigAttribute> getAttributes(Object o) throws IllegalArgumentException {
-        String requestUrl = ((FilterInvocation)o).getRequestUrl();
+        String requestUrl = ((FilterInvocation)o).getRequestUrl();  // 6
         List<Menu> menus =  menuService.getMenusByRole();
         for(Menu menu: menus){
             //  判断请求url所匹配的菜单所需要的角色

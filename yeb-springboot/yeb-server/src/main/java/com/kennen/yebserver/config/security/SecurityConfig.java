@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService())
+        auth.userDetailsService(userDetailsService()) // 2
                 .passwordEncoder(passwordEncoder());
     }
 
@@ -58,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(
+        web.ignoring().antMatchers( // 4
                 "/css/**",
                 "/js/**",
                 "/index.html",
@@ -76,7 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //  使用JWT不需要csrf
-        http.csrf().disable()
+        http.csrf().disable()// 3
                 //  基于token，不需要session
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
@@ -121,8 +121,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     @Bean
     public UserDetailsService userDetailsService(){
-        return username -> {
-            Hr hr = hrService.getHrByUserName(username);
+        return username -> {// 1
+            Hr hr = hrService.getHrByUserName(username); 
             if(hr!=null){
                 hr.setRoles(hrService.getRoles(hr.getId()));
                 return hr;

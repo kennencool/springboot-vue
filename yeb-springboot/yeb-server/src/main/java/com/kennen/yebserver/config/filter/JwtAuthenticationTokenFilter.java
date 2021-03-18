@@ -8,8 +8,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
+import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import javax.annotation.Resource;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -26,16 +28,17 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
     private String tokenHeader;
     @Value("${jwt.tokenHead}")
     private String tokenHead;
-    @Autowired private JwtTokenUtil jwtTokenUtil;
-    @Autowired private UserDetailsService userDetailsService;
+    @Resource private JwtTokenUtil jwtTokenUtil;
+    @Resource private UserDetailsService userDetailsService;
     
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
-        String authHeader = httpServletRequest.getHeader(tokenHeader);
+        String authHeader = httpServletRequest.getHeader(tokenHeader); // 5
         if(authHeader != null && authHeader.startsWith(tokenHead)){
             String authToken = authHeader.substring(tokenHead.length());
             String username = jwtTokenUtil.getUsernameFromToken(authToken);
             //  token存在，但是未登录
+            System.out.println("上："+SecurityContextHolder.getContext());
             if(username != null && SecurityContextHolder.getContext().getAuthentication() == null){
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
                 if(jwtTokenUtil.validateToken(authToken,userDetails)){
@@ -44,6 +47,7 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                             userDetails,null,userDetails.getAuthorities());
                     authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                     SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                    System.out.println("下："+SecurityContextHolder.getContext());
                 }
             }
         }

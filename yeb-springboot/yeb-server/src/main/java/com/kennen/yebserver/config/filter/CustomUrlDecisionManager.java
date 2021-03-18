@@ -20,7 +20,7 @@ import java.util.Collection;
 public class CustomUrlDecisionManager implements AccessDecisionManager {
     @Override
     public void decide(Authentication authentication, Object o, Collection<ConfigAttribute> collection) throws AccessDeniedException, InsufficientAuthenticationException {
-        for (ConfigAttribute configAttribute : collection) {
+        for (ConfigAttribute configAttribute : collection) { // 7
             //  当前url所需要的角色，这些信息是在 CustomFilter 中设置的，返回的正是 Collection<ConfigAttribute>
             String needRole = configAttribute.getAttribute();
             if("ROLE_LOGIN".equals(needRole)){

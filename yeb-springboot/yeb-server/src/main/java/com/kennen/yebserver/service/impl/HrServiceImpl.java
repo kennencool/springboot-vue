@@ -63,6 +63,7 @@ public class HrServiceImpl extends ServiceImpl<HrMapper, Hr> implements IHrServi
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
                 userDetails,null,userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        System.out.println("login:  "+SecurityContextHolder.getContext());
         
         String token = jwtTokenUtil.generateToken(userDetails);
         Map<String, String> tokenMap = new HashMap<>();
