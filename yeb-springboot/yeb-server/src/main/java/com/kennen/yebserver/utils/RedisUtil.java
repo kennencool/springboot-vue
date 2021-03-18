@@ -35,5 +35,33 @@ public class RedisUtil {
         return result;
     }
 
+    /**
+     * hash 存
+     * @param key
+     * @param hashKey
+     * @param value
+     */
+    public void setHash(String key, String hashKey, String value){
+        redisTemplate.opsForHash().put(key, hashKey, value);
+    }
 
+    /**
+     * hash 取
+     * @param key
+     * @param hashKey
+     * @return
+     */
+    public Object getHash(String key, String hashKey){
+        return redisTemplate.opsForHash().get(key, hashKey);
+    }
+
+    /**
+     * 判断hash中是否存在指定hashKey
+     * @param key
+     * @param hashKey
+     * @return
+     */
+    public boolean hContains(String key, String hashKey){
+        return redisTemplate.opsForHash().entries(key).containsKey(hashKey);
+    }
 }

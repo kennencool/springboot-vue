@@ -19,3 +19,13 @@ spring:
     password: guest
     host: localhost
     port: 5672
+    listener:
+      simple:
+        acknowledge-mode: manual
+        
+  redis:
+    host: 127.0.0.1
+    database: 9
+    port: 6380
+    cache:
+      cache-names: menus_cache

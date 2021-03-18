@@ -60,8 +60,6 @@ public class RabbitMQConfig {
         return rabbitTemplate;
     }
     
-    
-    
     @Bean
     public Queue queue(){
         return new Queue(MailConstants.MAIL_QUEUE_NAME);
@@ -73,7 +71,7 @@ public class RabbitMQConfig {
     }
     
     @Bean
-    public Binding bingding(){
+    public Binding binding(){
         return BindingBuilder.bind(queue()).to(directExchange()).with(MailConstants.MAIL_ROUTING_KEY);
     }
 }
